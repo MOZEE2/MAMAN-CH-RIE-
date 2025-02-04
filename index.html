@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyeux Anniversaire Mummy chérie</title>
+    <title>Joyeux Anniversaire, Maman Chérie 🎉💖</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
@@ -11,51 +11,75 @@
             font-family: 'Courier New', monospace;
             background: url('001.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: rgba(255, 255, 255, 0.9);
-            text-align: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: rgba(255, 255, 255, 0.9);
+            overflow: hidden;
         }
-        
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
         .container {
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
         }
 
         .header {
             font-size: 3em;
             font-family: 'Great Vibes', cursive;
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 15px;
-            animation: fadeIn 2s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
         }
 
         .subheader {
             font-size: 1.8em;
             margin-top: 10px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 10px;
-            animation: fadeIn 3s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
         }
 
         .message {
-            margin-top: 20px;
             font-size: 1.4em;
-            background: rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 15px;
-            animation: slideIn 2s ease-in-out;
+            text-align: left;
+            opacity: 0;
         }
 
         .footer {
-            font-size: 1em;
+            font-size: 1.2em;
             margin-top: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 10px;
-            animation: fadeIn 4s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 4s ease-in-out forwards;
         }
 
         /* Animations */
@@ -64,40 +88,65 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">Joyeux Anniversaire, Maman Chérie ! 🎉💖</div>
-        <div class="subheader">Mon plus grand trésor, ma plus belle étoile</div>
+        <div class="header" id="header">Joyeux Anniversaire, Maman Chérie ! 🎉💖</div>
+        <div class="subheader" id="subheader">Mon plus grand trésor, ma plus belle étoile</div>
         
-        <div class="message">
-            <p>Maman, en ce jour si spécial, je veux te rappeler combien tu es précieuse pour moi.</p>
-            <p>Ta tendresse, ton amour inconditionnel et ta force illuminent ma vie chaque jour. Grâce à toi, j’ai appris ce que signifie l’amour véritable, le courage et la persévérance.</p>
-            <p>Tu es mon guide, mon refuge, et ma plus grande source d’inspiration. Que cette journée soit remplie de joie, de rires et de tout l’amour que tu mérites !</p>
-        </div>
+        <div class="message" id="message1"></div>
+        <div class="message" id="message2"></div>
 
-        <div class="message">
-            <p>Comme une étoile qui brille dans le ciel, ta lumière éclaire mon chemin 🌟.</p>
-            <p>Chaque câlin que tu me donnes est une douce mélodie qui apaise mon cœur 💖.</p>
-            <p>Si la vie était une œuvre d’art, alors maman, tu serais la plus belle des toiles 🎨.</p>
-            <p>Que cette nouvelle année de ta vie soit remplie de bonheur, de paix et de rêves réalisés ✨.</p>
-        </div>
-
-        <div class="footer">
-            Avec tout mon amour, <br>
-            Ton enfant qui t’aime plus que tout 💕
-        </div>
+        <div class="footer" id="footer">Avec tout mon amour, <br> Ton enfant qui t’aime plus que tout 💕</div>
     </div>
 
     <audio autoplay loop>
         <source src="ANA1.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
+
+    <script>
+        function typeWriterEffect(element, text, delay, callback) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                } else if (callback) {
+                    setTimeout(callback, delay);
+                }
+            }
+            type();
+        }
+
+        function fadeIn(element, delay, callback) {
+            setTimeout(() => {
+                element.style.opacity = "1";
+                if (callback) callback();
+            }, delay);
+        }
+
+        window.onload = function() {
+            fadeIn(document.getElementById("header"), 500, () => {
+                fadeIn(document.getElementById("subheader"), 1000, () => {
+                    typeWriterEffect(document.getElementById("message1"), 
+                    "Maman, en ce jour si spécial, je veux te rappeler combien tu es précieuse pour moi. " + 
+                    "Ta tendresse, ton amour inconditionnel et ta force illuminent ma vie chaque jour. " + 
+                    "Grâce à toi, j’ai appris ce que signifie l’amour véritable, le courage et la persévérance.", 
+                    1000, () => {
+                        typeWriterEffect(document.getElementById("message2"), 
+                        "Tu es mon guide, mon refuge, et ma plus grande source d’inspiration. " + 
+                        "Comme une étoile qui brille dans le ciel, ta lumière éclaire mon chemin 🌟. " + 
+                        "Que cette nouvelle année de ta vie soit remplie de bonheur, de paix et de rêves réalisés ✨.", 
+                        1000, () => {
+                            fadeIn(document.getElementById("footer"), 500);
+                        });
+                    });
+                });
+            });
+        };
+    </script>
 </body>
 </html>
-                                                                                                    </html>
