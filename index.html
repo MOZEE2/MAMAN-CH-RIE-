@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyeux Anniversaire, Maman Chérie 🎉💖</title>
+    <title>Joyeux Anniversaire Maman ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300&display=swap');
 
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Raleway', sans-serif;
             background: url('001.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             color: rgba(255, 255, 255, 0.9);
-            overflow: hidden;
-        }
-        
-    overflow-y: auto; /* Permet le défilement vertical */
+            text-align: center;
+            overflow-y: auto;
+            position: relative;
         }
 
         body::before {
@@ -32,7 +32,7 @@
             width: 100%;
             height: 100%;
             background: inherit;
-            filter: blur(5px);
+            filter: blur(8px);
             z-index: -1;
         }
 
@@ -40,133 +40,76 @@
             background: rgba(0, 0, 0, 0.6);
             padding: 30px;
             border-radius: 15px;
-            text-align: center;
-            max-width: 600px;
+            max-width: 700px;
+            margin: 30px;
         }
 
-        .header, .subheader, .message, .footer {
-            opacity: 1;
-        }
-
-        .header {
-            font-size: 3em;
+        h1 {
             font-family: 'Great Vibes', cursive;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 3em;
+            background: rgba(255, 255, 255, 0.2);
             padding: 15px;
-            border-radius: 15px;
-            animation: fadeIn 2s ease-in-out forwards;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .subheader {
+        h2 {
             font-size: 1.8em;
             margin-top: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            font-weight: normal;
+            background: rgba(255, 255, 255, 0.2);
             padding: 10px;
             border-radius: 10px;
-            animation: fadeIn 3s ease-in-out forwards;
+            animation: fadeIn 3s ease-in-out;
         }
 
-        .message {
-            font-size: 1.4em;
+        p {
+            font-size: 1.3em;
             margin-top: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             padding: 15px;
-            border-radius: 15px;
-            text-align: left;
+            border-radius: 10px;
+            animation: slideIn 2s ease-in-out;
         }
 
         .footer {
-            font-size: 1.2em;
+            font-size: 1em;
             margin-top: 20px;
             font-style: italic;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            animation: fadeIn 4s ease-in-out forwards;
+            animation: fadeIn 4s ease-in-out;
         }
 
-        /* Animation */
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header" id="header">Joyeux Anniversaire, Maman Chérie ! 🎉💖</div>
-        <div class="subheader" id="subheader">Mon plus grand trésor, ma plus belle étoile</div>
+        <h1>Joyeux Anniversaire, Maman Chérie ! 🎉💖</h1>
+        <h2>Mon plus grand trésor, ma plus belle étoile ✨</h2>
         
-        <div class="message" id="message1"></div>
-        <div class="message" id="message2"></div>
+        <p>Maman, aujourd’hui est un jour exceptionnel, celui où le monde a eu la chance de t’accueillir.</p>
+        <p>Ta tendresse, ton amour inconditionnel et ta force illuminent ma vie chaque jour. Grâce à toi, j’ai appris ce que signifie l’amour véritable, le courage et la persévérance.</p>
+        <p>Tu es mon guide, mon refuge, et ma plus grande source d’inspiration. Que cette journée soit remplie de bonheur, de sourires et de tout l’amour que tu mérites !</p>
+        <p>Si la vie était une œuvre d’art, alors maman, tu serais la plus belle des toiles. Je t’aime infiniment ❤️.</p>
 
-        <div class="footer" id="footer">Avec tout mon amour, <br> Ton enfant qui t’aime plus que tout 💕</div>
+        <div class="footer">
+            Avec tout mon amour, <br>
+            Ton enfant qui t’aime plus que tout 💕
+        </div>
     </div>
 
-    <script>
-        function scrollToBottom() {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
-}
-
-// Modifie chaque apparition de texte pour forcer le défilement
-function typeWriterEffect(element, text, delay, callback) {
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, 50);
-            scrollToBottom(); // Force le défilement pendant l'animation
-        } else if (callback) {
-            setTimeout(callback, delay);
-        }
-    }
-    type();
-}
-        function typeWriterEffect(element, text, delay, callback) {
-            let i = 0;
-            element.style.opacity = "1";  // Rendre visible avant d'écrire
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, 50);
-                } else if (callback) {
-                    setTimeout(callback, delay);
-                }
-            }
-            type();
-        }
-
-        function fadeIn(element, delay, callback) {
-            setTimeout(() => {
-                element.style.opacity = "1";
-                if (callback) callback();
-            }, delay);
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            fadeIn(document.getElementById("header"), 500, () => {
-                fadeIn(document.getElementById("subheader"), 1000, () => {
-                    typeWriterEffect(document.getElementById("message1"), 
-                    "Maman, en ce jour si spécial, je veux te rappeler combien tu es précieuse pour moi. " + 
-                    "Ta tendresse, ton amour inconditionnel et ta force illuminent ma vie chaque jour. " + 
-                    "Grâce à toi, j’ai appris ce que signifie l’amour véritable, le courage et la persévérance.", 
-                    1000, () => {
-                        typeWriterEffect(document.getElementById("message2"), 
-                        "Tu es mon guide, mon refuge, et ma plus grande source d’inspiration. " + 
-                        "Comme une étoile qui brille dans le ciel, ta lumière éclaire mon chemin 🌟. " + 
-                        "Que cette nouvelle année de ta vie soit remplie de bonheur, de paix et de rêves réalisés ✨.", 
-                        1000, () => {
-                            fadeIn(document.getElementById("footer"), 500);
-                        });
-                    });
-                });
-            });
-        });
-    </script>
+    <audio id="audio" autoplay loop>
+        <source src="ANA1.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
 </body>
 </html>
