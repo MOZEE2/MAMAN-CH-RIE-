@@ -41,13 +41,16 @@
             max-width: 600px;
         }
 
+        .header, .subheader, .message, .footer {
+            opacity: 0;
+        }
+
         .header {
             font-size: 3em;
             font-family: 'Great Vibes', cursive;
             background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 15px;
-            opacity: 0;
             animation: fadeIn 2s ease-in-out forwards;
         }
 
@@ -57,7 +60,6 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 10px;
-            opacity: 0;
             animation: fadeIn 3s ease-in-out forwards;
         }
 
@@ -68,7 +70,6 @@
             padding: 15px;
             border-radius: 15px;
             text-align: left;
-            opacity: 0;
         }
 
         .footer {
@@ -78,16 +79,14 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 10px;
-            opacity: 0;
             animation: fadeIn 4s ease-in-out forwards;
         }
 
-        /* Animations */
+        /* Animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
-
     </style>
 </head>
 <body>
@@ -109,6 +108,7 @@
     <script>
         function typeWriterEffect(element, text, delay, callback) {
             let i = 0;
+            element.style.opacity = "1";  // Rendre visible avant d'écrire
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
@@ -128,7 +128,7 @@
             }, delay);
         }
 
-        window.onload = function() {
+        document.addEventListener("DOMContentLoaded", function() {
             fadeIn(document.getElementById("header"), 500, () => {
                 fadeIn(document.getElementById("subheader"), 1000, () => {
                     typeWriterEffect(document.getElementById("message1"), 
@@ -146,7 +146,7 @@
                     });
                 });
             });
-        };
+        });
     </script>
 </body>
 </html>
